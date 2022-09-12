@@ -1,0 +1,25 @@
+{
+  "name": "node",
+  "version": "0.0.1",
+  "description": "best project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js",
+    "show-this-folder": "ls -al",
+    "begin": "./start.sh"
+  },
+  "keywords": [
+    "best",
+    "project",
+    "node"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ladash": "^1.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
