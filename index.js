@@ -9,7 +9,7 @@ const path = require('path');
 const _ = require('lodash');
 
 const res = Math.superSum(1,2,3,4,5);
-// const textSync = fs.readFileSync('./README.md', {encoding: 'utf8'});
+const textSync = fs.readFileSync('./README.md', {encoding: 'utf8'});
 
 // const textAsync = fs.readFileSync('./README.md'
 //           ,{encoding: 'utf8'}
@@ -17,13 +17,13 @@ const res = Math.superSum(1,2,3,4,5);
 //                            else{/*console.log('Data', data)*/data}}
 //           );
 // promise
-console.log('Async file reading with promises');
+// console.log('Async file reading with promises');
 
-const myReadFile = util.promisify(fs.readFileSync);
+// const myReadFile = util.promisify(fs.readFileSync);
 
-const df = myReadFile('./README.md', {encoding:'utf-8'}).then(data => console.log('Data', data)).catch(err => console.log('Error', err));
+// const df = myReadFile('./README.md', {encoding:'utf-8'}).then(data => console.log('Data', data)).catch(err => console.log('Error', err));
 
-console.log(df);
+// console.log(df);
 
 // console.log(res);
 // console.log(Math.superSum(6,7,8,9,10));
@@ -48,5 +48,20 @@ console.log(df);
 // console.log('process: ', process.env); // переменные окружения
 // console.log('__filename: ', __filename);
 // console.log('__dirname: ', __dirname);
-console.log('fs.readdirSync(): ', fs.readdirSync('.')); //чтение текущей папки
+// console.log('fs.readdirSync(): ', fs.readdirSync('.')); //чтение текущей папки
+
+// const files = fs.readdirSync('.').filter(e => e.slice(-2) == 'js').toString();
+const files = fs.readdirSync('.').filter(e => e.endsWith('js')).toString();
+const readFile = util.promisify(fs.readFileSync);
+const content = fs.readdirSync('.')
+                  .filter(f => f.endsWith('js'))
+                //   .forEach((f) => readFile(f, {encoding: 'utf-8'})
+                //     .then(data => console.dir(data))
+                //     .catch(err => console.log(err))
+                //   );
+                  .forEach((file) => {
+                    console.log(fs.readFileSync(file, "utf8"));
+                  });
+console.log(files);
+console.log(content);
 
