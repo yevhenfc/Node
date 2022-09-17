@@ -1,7 +1,7 @@
 const http = require ('http');
-const fs = require('fs');
 const PORT = 5000;
 const HOST = '127.0.0.1';
+const requestListiner = require('./requestListener');
 
 const server = http.createServer((req, res) => {
     const {url, method} = req;
@@ -14,4 +14,4 @@ const server = http.createServer((req, res) => {
     res.end(indexContent);
 }); 
 
-server.listen(PORT, HOST, console.log(`Server is listening ${HOST} on ${PORT} port`));
+server.listen(PORT, HOST, () => {console.log(`Server is listening ${HOST} on ${PORT} port`)});
