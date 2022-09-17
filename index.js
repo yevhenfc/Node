@@ -1,7 +1,17 @@
-const http = require('http');
-const requestListener = require('./requestListener.js');
-const PORT = 3000;
+const http = require ('http');
+const fs = require('fs');
+const PORT = 5000;
+const HOST = '127.0.0.1';
 
-const server = http.createServer(requestListener);
-server.listen(PORT);
-let count = 0;
+const server = http.createServer((req, res) => {
+    const {url, method} = req;
+    console.log('url:', url);   
+    console.log('method:', method);
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/html');
+    const indexContent = fs.readFileSync('./index.html', "utf8");
+    console.log(indexContent);
+    res.end(indexContent);
+}); 
+
+server.listen(PORT, HOST, console.log(`Server is listening ${HOST} on ${PORT} port`));
